@@ -262,9 +262,8 @@ audioNetworkStatsUpdated:(OTSubscriberKitAudioNetworkStats*)stats
             {
                 result = OTNetworkTestResultVoiceOnly;
                 userInfo = [NSDictionary
-                            dictionaryWithObjectsAndKeys:@"The quality of your network is not enough "
-                            "to start a video call, please try it again later "
-                            "or connect to another network",
+                            dictionaryWithObjectsAndKeys:@"The quality of your network is medium "
+                            "you can start a voice only call",
                             NSLocalizedDescriptionKey,
                             nil];
             } else
@@ -288,9 +287,8 @@ audioNetworkStatsUpdated:(OTSubscriberKitAudioNetworkStats*)stats
     {
         result = OTNetworkTestResultVoiceOnly;
         userInfo = [NSDictionary
-                    dictionaryWithObjectsAndKeys:@"The quality of your network is not enough "
-                    "to start a video call, please try it again later "
-                    "or connect to another network",
+                    dictionaryWithObjectsAndKeys:@"The quality of your network is medium "
+                    "you can start a voice only call",
                     NSLocalizedDescriptionKey,
                     nil];
         _error = [[OTError alloc] initWithDomain:@"OTSubscriber"
@@ -301,6 +299,7 @@ audioNetworkStatsUpdated:(OTSubscriberKitAudioNetworkStats*)stats
         
     } else
     {
+        NSLog(@"The quality of your network is good for video and audio call");
         _result = result;
         [_session disconnect:nil];
     }
